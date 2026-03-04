@@ -2,7 +2,11 @@
 #include <vector>
 #include <random>
 #include <cmath>
-
+/**
+ * Simple simulator using GBM
+ * https://en.wikipedia.org/wiki/Geometric_Brownian_motion
+ * Single step (1 year)
+ */
 int main() {
     // 1. Initial param.
     double s0 = 100;        // Starting price
