@@ -1,1 +1,8 @@
 .DS_Store
+build/
+bin/
+*.o
+*.dSYM
+simple_gbm
+ufc_sim
+.vscode/
