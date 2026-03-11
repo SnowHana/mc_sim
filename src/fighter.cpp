@@ -2,10 +2,15 @@
 #include <iostream>
 
 
-Fighter::Fighter(std::string n, double w) : name(n), winRate(w) {}
+Fighter::Fighter(const std::string& n, double w) : name(n), winRate(w) {}
+
 
 // Method
 bool Fighter::fights(const Fighter& opponent, std::mt19937& gen) const {
+    /**
+     * @brief Simulate a single fight vs Opponent
+     * 
+     */
     double total = this->winRate + opponent.winRate;
     double prob = this->winRate / total;
 
@@ -14,19 +19,33 @@ bool Fighter::fights(const Fighter& opponent, std::mt19937& gen) const {
     return dist(gen) < prob;
 }
 
+
 void FightNight::addMatch(const Fighter& f1, const Fighter& f2) {
-    fightCard.push_back(std::make_pair(&f1, &f2));
-    std::cout << "Added match: " << f1.name << " vs " << f2.name << "\n";
+    // TODO: Add....
+    // Sanity check would be...
+    // 1. Checking fighter s are legit? OR Same match already exist?
+    Match match;
+    match.redCorner = &f1;
+    match.blueCorner = &f2;
+
+    fightCards.push_back(match);
+    std::cout << "Added match: " << f1.getName() << " vs " << f2.getName() << "\n";
 }
 
-std::vector<bool> FightNight::prediction_mc(std::mt19937& gen, const int simNum) {
-    // Predict all matches?
-    std::vector<bool> results;
-    for (const auto [f1, f2] : fightCard) {
-        std::cout << f1->name << " vs " << f2->name << "-> : ";
-        bool f1Win = f1->fights(*f2, gen);
-        std::cout << f1Win; 
-        results.push_back(f1Win);
+std::vector<double> FightNight::prediction_mc(std::mt19937& gen, const int simNum) const {
+    // Predict all matches using Monte Carlo
+    std::vector<double> results;
+    for (const auto& match : fightCards) {
+        std::cout << match.redCorner->getName() << " vs " << match.blueCorner->getName() << "-> : ";
+        std::size_t f1Wins = 0;
+        for (std::size_t i = 0; i < static_cast<std::size_t>(simNum); ++i) {
+            if (match.redCorner->fights(*match.blueCorner, gen)) {
+                f1Wins++;
+            }
+        }
+        double winProb = static_cast<double>(f1Wins) / simNum;
+        std::cout << winProb * 100 << "%" << " vs " << (1 - winProb) * 100 << "%" << std::endl;
+        results.push_back(f1Wins);
     }
 
     return results;

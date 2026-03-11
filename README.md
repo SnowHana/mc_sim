@@ -16,3 +16,16 @@
 
 - [ ] Real life stock data : Either fetch remote or local csv file
 - [ ] Different formula for numerical checking
+
+# Simulation
+
+## Single fight
+
+### V1.
+
+Single fight is simulated using a win rate from previous games.
+$$p = \frac{x}{x+ y}, \quad X \sim U(0, 1), \quad \mathbb{P}(X< p)$$
+
+We just interpret winrate...
+
+Then, we use monte-carlo simulation, to simulate $n$ times, and record how many times each player won.

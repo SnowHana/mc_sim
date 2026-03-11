@@ -17,7 +17,7 @@ int main() {
     ufc300.addMatch(f1, f2);
 
     std::cout << "----Fight Prediction----" << std::endl;
-    ufc300.prediction_mc(gen, 10);
+    ufc300.prediction_mc(gen, 100);
 
 
     return 0;
