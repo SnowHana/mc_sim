@@ -19,23 +19,23 @@ class Fighter {
         bool fights(const Fighter& opponent, std::mt19937& gen) const;
 };
 
-struct Match {
-    const Fighter* redCorner;
-    const Fighter* blueCorner;
-};
+// struct Match {
+//     const Fighter* redCorner;
+//     const Fighter* blueCorner;
+// };
 
-class FightNight {
-    private:
-        std::vector<Match> fightCards;
-    public:
-        // Vector of pairs : ie. <"Miocic", "Jones">
-        void addMatch(const Fighter& f1, const Fighter& f2);
-        void removeMatch(const Fighter& f1, const Fighter& f2);
+// class FightNight {
+//     private:
+//         std::vector<Match> fightCards;
+//     public:
+//         // Vector of pairs : ie. <"Miocic", "Jones">
+//         void addMatch(const Fighter& f1, const Fighter& f2);
+//         void removeMatch(const Fighter& f1, const Fighter& f2);
 
-        // Prediction
-        std::vector<double> prediction_mc(std::mt19937& gen, const int simNum) const;
+//         // Prediction
+//         std::vector<double> prediction_mc(std::mt19937& gen, const int simNum) const;
         
-        // Getter
-        const std::vector<Match>& getFightcards() { return fightCards; }
-};
+//         // Getter
+//         const std::vector<Match>& getFightcards() const { return fightCards; }
+// };
 #endif
