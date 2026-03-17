@@ -30,7 +30,7 @@ class Simulator {
 
         void runInterface();
         void showOdds(const FightNight& fn);
-        void addFighter(const std::string& name, double winRate);
+        void addFighter(const std::string& name, double h, double w, double r, double sl, double sa, double sap, double sd, double ta, double tac, double td, double sub, int st);
         Fighter* findFighter(const std::string& name) const;
 
 

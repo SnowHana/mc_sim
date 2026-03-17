@@ -10,10 +10,10 @@ set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
 # 2. THE MAIN SIMULATOR
 # We combine the logic (fighter.cpp) with the main entry point
-add_executable(ufc_sim src/main.cpp src/fighter.cpp)
+add_executable(ufc_sim src/main.cpp src/fighter.cpp src/fightnight.cpp src/simulator.cpp)
 target_include_directories(ufc_sim PUBLIC ${INCLUDE_DIR})
 
 # 3. THE TEST SUITE
 # We combine the SAME logic (fighter.cpp) with the test entry point
-add_executable(run_tests tests/test_fight_v1.cpp src/fighter.cpp)
+add_executable(run_tests tests/test_fight_v1.cpp src/fighter.cpp src/fightnight.cpp src/simulator.cpp)
 target_include_directories(run_tests PUBLIC ${INCLUDE_DIR})
